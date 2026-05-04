@@ -77,6 +77,6 @@ async def predict(file: UploadFile = File(...)):
     except Exception as e:
         return {"error": str(e)}
 
-# to run the api type this in the terminal : write this in the terminal
-# for reload type this in the terminal : uvicorn API:app --reload
+# to run the api type this in the terminal : uvicorn main:app --reload --port 8000
+# for reload type this in the terminal : uvicorn main:app --reload
 # browser: http://127.0.0.1:8000/docs    
