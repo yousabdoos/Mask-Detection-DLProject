@@ -327,5 +327,8 @@ async def predict(file: UploadFile = File(...)):
         return {"error": str(e)}
 
 # ====================== # RUN COMMAND # ====================== 
-# for reload: uvicorn main:app --reload --port 8000 
-# OPEN:http://127.0.0.1:8000
+# for reload: 
+# uvicorn main:app --reload --port 8000 
+
+# OPEN:
+# http://127.0.0.1:8000
