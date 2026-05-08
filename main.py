@@ -14,7 +14,7 @@ import torch.nn as nn
 # ======================
 # 1. SETTINGS
 # ======================
-MODEL_PATH = "best_model.pth"
+MODEL_PATH = "mask_detector.pth"
 IMG_SIZE = 224
 
 CLASSES = ["WithMask", "WithoutMask"]
@@ -90,7 +90,7 @@ def home():
             object-fit: cover;
             margin-top: 15px;
 
-            /* ✅ MIRROR CAMERA */
+            /*MIRROR CAMERA */
             transform: scaleX(-1);
         }
 
@@ -134,7 +134,7 @@ def home():
 <body>
 
 <div id="note-box">
-    <b>📌 Image Guidelines</b>
+    <b>Image Guidelines</b>
     <ul>
         <li>Only one face should appear</li>
         <li>Keep face close to camera</li>
@@ -145,7 +145,7 @@ def home():
 
 <h1>Face Mask Detection</h1>
 
-<h2>📷 Camera</h2>
+<h2>Camera</h2>
 
 <video id="video" autoplay></video>
 
@@ -155,7 +155,7 @@ def home():
 
 <canvas id="canvas" width="400" height="400" style="display:none;"></canvas>
 
-<h2>🖼 Upload Image</h2>
+<h2>Upload Image</h2>
 
 <input type="file" id="uploadInput">
 <br>
@@ -183,7 +183,6 @@ async function captureImage() {
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
 
-    // ✅ FIX MIRROR CAPTURE (important!)
     context.translate(canvas.width, 0);
     context.scale(-1, 1);
 
@@ -202,7 +201,8 @@ async function captureImage() {
         let result = await response.json();
 
         document.getElementById("result").innerHTML =
-            "Prediction: " + result.class +
+            "Status: " + result.status +
+            "<br>Action: " + result.action +
             "<br><br>Confidence: " + result.confidence.toFixed(4);
 
     }, "image/jpeg");
@@ -231,7 +231,8 @@ async function uploadImage() {
     let result = await response.json();
 
     document.getElementById("result").innerHTML =
-        "Prediction: " + result.class +
+        "Status: " + result.status +
+        "<br>Action: " + result.action +
         "<br><br>Confidence: " + result.confidence.toFixed(4);
 }
 
@@ -314,11 +315,19 @@ async def predict(file: UploadFile = File(...)):
         predicted_class = CLASSES[probs.argmax().item()]
         confidence = float(probs.max().item())
 
+        if predicted_class == "WithMask":
+            status = "mask_on"
+            action = "Allow entry"
+        else:
+            status = "mask_off"
+            action = "Deny entry"
+
         return {
-            "class": predicted_class,
-            "confidence": confidence,
+            "status": status,
+            "action": action,
+            "confidence": round(confidence, 4),
             "probabilities": {
-                CLASSES[i]: float(probs[i].item())
+                CLASSES[i]: round(float(probs[i].item()), 4)
                 for i in range(len(CLASSES))
             }
         }
