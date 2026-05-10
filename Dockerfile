@@ -22,21 +22,14 @@ WORKDIR /app
 # ========================
 # Python Dependencies
 # ========================
-RUN pip install --no-cache-dir \
-    fastapi \
-    uvicorn[standard] \
-    torch \
-    torchvision \
-    opencv-python-headless \
-    pillow \
-    numpy \
-    python-multipart
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 # ========================
 # Copy App Files
 # ========================
 COPY main.py .
-COPY best_model.pth .
+COPY mask_detector.pth .
 
 # ========================
 # Expose Port
