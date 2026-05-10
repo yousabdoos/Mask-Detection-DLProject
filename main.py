@@ -12,13 +12,11 @@ from torchvision import transforms, models
 import torch.nn as nn
 
 # ======================
-# 1. SETTINGS
+# 1. Config
 # ======================
 MODEL_PATH = "mask_detector.pth"
 IMG_SIZE = 224
-
 CLASSES = ["WithMask", "WithoutMask"]
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # ======================
