@@ -1,0 +1,45 @@
+
+Epoch 1/10
+Train Loss: 0.0542 | Acc: 0.9827
+Val   Loss: 0.3440 | Acc: 0.7950
+Model saved!
+
+Epoch 2/10
+Train Loss: 0.0286 | Acc: 0.9900
+Val   Loss: 0.0798 | Acc: 0.9663
+Model saved!
+
+Epoch 3/10
+Train Loss: 0.0232 | Acc: 0.9923
+Val   Loss: 0.0138 | Acc: 0.9938
+Model saved!
+
+Epoch 4/10
+Train Loss: 0.0202 | Acc: 0.9935
+Val   Loss: 0.0069 | Acc: 0.9975
+Model saved!
+
+Epoch 5/10
+Train Loss: 0.0181 | Acc: 0.9932
+Val   Loss: 0.0258 | Acc: 0.9912
+
+Epoch 6/10
+Train Loss: 0.0189 | Acc: 0.9935
+Val   Loss: 0.0135 | Acc: 0.9950
+
+Epoch 7/10
+Train Loss: 0.0133 | Acc: 0.9954
+Val   Loss: 0.0056 | Acc: 0.9975
+Model saved!
+
+Epoch 8/10
+Train Loss: 0.0159 | Acc: 0.9950
+Val   Loss: 0.0174 | Acc: 0.9888
+
+Epoch 9/10
+Train Loss: 0.0092 | Acc: 0.9967
+Val   Loss: 0.0134 | Acc: 0.9962
+
+Epoch 10/10
+Train Loss: 0.0110 | Acc: 0.9956
+Val   Loss: 0.0251 | Acc: 0.9938
